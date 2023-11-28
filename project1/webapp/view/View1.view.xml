@@ -118,27 +118,27 @@
                     />
                 </f:layoutXS>
 
-                <w:Card manifest="model/GapsByDepartment.json">
+                <w:Card manifest="/model/GapsByDepartment.json">
 						<w:layoutData>
 							<f:GridContainerItemLayoutData rows="4" columns="4" />
 						</w:layoutData>
 					</w:Card>   
-                <w:Card manifest="model/GapsByAisle.json">
+                <w:Card manifest="/model/GapsByAisle.json">
 						<w:layoutData>
 							<f:GridContainerItemLayoutData rows="4" columns="8" />
 						</w:layoutData>
 					</w:Card>              
-                <w:Card manifest="model/Top5ArticleGaps.json">
+                <w:Card manifest="/model/Top5ArticleGaps.json">
 						<w:layoutData>
 							<f:GridContainerItemLayoutData rows="8" columns="8" />
 						</w:layoutData>
 					</w:Card>
-                                    <w:Card manifest="model/GapsByDepartment.json">
+                                    <w:Card manifest="/model/GapsByDepartment.json">
 						<w:layoutData>
 							<f:GridContainerItemLayoutData rows="4" columns="2" />
 						</w:layoutData>
 					</w:Card> 
-                                    <w:Card manifest="model/GapsByDepartment.json">
+                                    <w:Card manifest="/model/GapsByDepartment.json">
 						<w:layoutData>
 							<f:GridContainerItemLayoutData rows="4" columns="2" />
 						</w:layoutData>
