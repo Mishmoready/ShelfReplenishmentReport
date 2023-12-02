@@ -1,0 +1,92 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.f"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns="sap.m"
+    xmlns:w="sap.ui.integration.widgets">
+    <Shell >
+        <f:DynamicPage headerExpanded="true">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
+                    </f:heading>
+                    <f:expandedContent>
+                        <Label id="expandedLabel" text="No filters active" />
+                        <!-- <Button text="Press me" press="navToNextPage"/> -->
+                    </f:expandedContent>
+                    <f:snappedContent>
+                        <Label id="snappedLabel" text="No filters active" />
+                    </f:snappedContent>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:header>
+                <f:DynamicPageHeader>
+                    <f:content>
+                        <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem name="Name" label="Department" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Name1" label="Time Period" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker id="DP1" placeholder="Enter Date" change="handleChange" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Name2" label="Number of Gaps" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Name3" label="Gap Status" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <f:GridContainer id="demoGrid" class="sapUiSmallMargin" columnsChange=".onGridColumnsChange">
+                    <f:layout>
+                        <f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+                    </f:layout>
+                    <f:layoutXS>
+                        <f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+                    </f:layoutXS>
+
+                    <w:Card manifest="/model/GapsByDepartment.json">
+                        <w:layoutData>
+                            <f:GridContainerItemLayoutData rows="4" columns="6" />
+                        </w:layoutData>
+                    </w:Card>
+                    <w:Card manifest="/model/GapsByAisle.json">
+                        <w:layoutData>
+                            <f:GridContainerItemLayoutData rows="4" columns="6" />
+                        </w:layoutData>
+                    </w:Card>
+                    <w:Card manifest="/model/Top5ArticleGaps.json">
+                        <w:layoutData>
+                            <f:GridContainerItemLayoutData rows="8" columns="8" />
+                        </w:layoutData>
+                    </w:Card>
+                    <w:Card manifest="/model/SupplierOOS.json">
+                        <w:layoutData>
+                            <f:GridContainerItemLayoutData rows="4" columns="2" />
+                        </w:layoutData>
+                    </w:Card>
+                    <w:Card manifest="/model/OOSVsNotFilled.json">
+                        <w:layoutData>
+                            <f:GridContainerItemLayoutData rows="4" columns="2" />
+                        </w:layoutData>
+                    </w:Card>
+                </f:GridContainer>
+            </f:content>
+        </f:DynamicPage>
+    </Shell>
+</mvc:View>

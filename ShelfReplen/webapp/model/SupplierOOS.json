@@ -8,9 +8,15 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card",
+		"description": "A long description for this Card",
 		"tags": {
 			"keywords": [
-				"Analytical"
+				"Analytical",
+				"Card",
+				"Line",
+				"Sample"
 			]
 		}
 	},
@@ -23,7 +29,7 @@
 	"sap.card": {
 		"type": "Analytical",
 		"header": {
-			"title": "Gaps By Department"
+			"title": "Sales by Stores"
 		},
 		"content": {
 			"chartType": "Donut",
@@ -31,7 +37,7 @@
 				"legendGroup": {
 					"layout": {
 						"position": "top",
-						"alignment": "right"
+						"alignment": "center"
 					}
 				},
 				"plotArea": {
@@ -48,33 +54,13 @@
 					"milk": [
 						{
 							"id": "1",
-							"storeName": "Bakery",
-							"revenue": 200
+							"storeName": "Grocery",
+							"revenue": 345292.06
 						},
 						{
 							"id": "2",
 							"storeName": "Chilled",
-							"revenue": 25
-						},
-						{
-							"id": "3",
-							"storeName": "Frozen",
-							"revenue": 10
-						},						
-						{
-							"id": "4",
-							"storeName": "Grocery",
-							"revenue": 10
-						},
-						{
-							"id": "5",
-							"storeName": "Liquor",
-							"revenue": 10
-						},
-						{
-							"id": "6",
-							"storeName": "Text",
-							"revenue": 15
+							"revenue": 1564235.29
 						}
 					]
 				},
@@ -113,10 +99,7 @@
 				{
 					"type": "Navigation",
 					"parameters": {
-						"routeName": "List",
-						"routeParameters": {
-							"viewName": "List"
-						}
+						"url": "https://sap.com?id={id}&revenue={revenue}&storeName={storeName}"
 					}
 				}
 			]

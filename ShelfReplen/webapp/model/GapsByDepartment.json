@@ -113,10 +113,7 @@
 				{
 					"type": "Navigation",
 					"parameters": {
-						"routeName": "List",
-						"routeParameters": {
-							"viewName": "List"
-						}
+						"url": "https://sap.com?id={id}&revenue={revenue}&storeName={storeName}"
 					}
 				}
 			]

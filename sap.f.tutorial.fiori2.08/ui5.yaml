@@ -1,0 +1,9 @@
+specVersion: '3.0'
+metadata:
+  name: sap-f-tutorial-fiori2-08
+type: application
+framework:
+  name: SAPUI5
+  version: '1.119.1'
+  libraries:
+    - name: themelib_sap_horizon
