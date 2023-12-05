@@ -99,7 +99,7 @@
 				{
 					"type": "Navigation",
 					"parameters": {
-						"url": "https://sap.com?id={id}&revenue={revenue}&storeName={storeName}"
+						"url": "https://port8080-workspaces-ws-tbjc2.ap21.trial.applicationstudio.cloud.sap/test/flpSandbox.html?sap-ui-xx-viewCache=false#project1-display&/list"
 					}
 				}
 			]

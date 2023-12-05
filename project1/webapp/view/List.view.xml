@@ -2,16 +2,101 @@
 	controllerName="project1.controller.List"
 	xmlns="sap.m"
 	xmlns:f="sap.f"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:fb="sap.ui.comp.filterbar">
 	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
 		<!-- DynamicPage Title -->
-		<f:title>
-			<f:DynamicPageTitle>
-				<f:heading>
-					<Title text="Products ({products>/ProductCollectionStats/Counts/Total})"/>
-				</f:heading>
-			</f:DynamicPageTitle>
-		</f:title>
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <svm:SmartVariantManagement
+                        id="svm"
+                        showExecuteOnSelection="true"
+                    />
+                </f:heading>
+                <f:expandedContent>
+                    <Button text="Detail (Coming Soon)" press="navToNextPage2"/>
+                </f:expandedContent>
+                <f:snappedContent>
+                    <Label
+                        id="snappedLabel"
+                        text="No filters active"
+                    />
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar
+                        id="filterbar"
+                        persistencyKey="myPersKey"
+                        useToolbar="false"
+                        search=".onSearch"
+                        filterChange=".onFilterChange"
+                        afterVariantLoad=".onAfterVariantLoad"
+                    >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem
+                                name="Name"
+                                label="Department"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <MultiComboBox />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem
+                                name="Name1"
+                                label="Time Period"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <DatePicker
+                                        id="DP1"
+                                        placeholder="Enter Date"
+                                        change="handleChange"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem
+                                name="Name2"
+                                label="Number of Gaps"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <MultiComboBox />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem
+                                name="Name3"
+                                label="Number of Gaps"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <MultiComboBox />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+							<fb:FilterGroupItem
+                                name="Name4"
+                                label="Gap Status"
+                                groupName="Group1"
+                                visibleInFilterBar="true"
+                            >
+                                <fb:control>
+                                    <MultiComboBox />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
 
 		<!-- DynamicPage Content -->
 		<f:content>
@@ -21,12 +106,12 @@
 					<ToolbarSpacer/>
 					<OverflowToolbarButton icon="sap-icon://paper-plane" text="Send" type="Transparent" press=".onSend"/>
 					<ToolbarSeparator/>
-					<OverflowToolbarButton icon="sap-icon://add" text="Add" type="Transparent" press=".onAdd"/>
 					<OverflowToolbarButton icon="sap-icon://sort" text="Sort" type="Transparent" press=".onSort"/>
+					<OverflowToolbarButton icon="sap-icon://filter" text="Filter" type="Transparent" press=".onFilter"/>
 					<OverflowToolbarButton icon="sap-icon://group-2" text="Group" type="Transparent" press=".onGroup"/>
 					<OverflowToolbarButton icon="sap-icon://action-settings" text="Settings" type="Transparent" press=".onSettings"/>
 					<ToolbarSeparator/>
-					<OverflowToolbarButton icon="sap-icon://filter" text="Filter" type="Transparent" press=".onFilter"/>
+					<OverflowToolbarButton icon="sap-icon://excel-attachment" text="Upload As Spreadsheet" type="Transparent" press=".onExcel"/>
 					<OverflowToolbarButton icon="sap-icon://print" text="Print" type="Transparent" press=".onPrint"/>
 					<ToolbarSeparator/>
 					<OverflowToolbarButton icon="sap-icon://full-screen" text="Full Screen" type="Transparent" press=".onFullScreen"/>
@@ -34,6 +119,7 @@
 				<Table
 					id="productsTable"
 					inset="false"
+                    itemPress="OnListItemPress"
 					items="{
 						path: 'products>/ProductCollection',
 						sorter: {

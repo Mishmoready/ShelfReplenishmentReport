@@ -90,6 +90,14 @@
           "target": [
             "TargetList"
           ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail",
+          "target": [
+            "TargetList",
+            "TargetDetail"
+          ]
         }
       ],
       "targets": {
@@ -107,6 +115,14 @@
           "controlAggregation": "beginColumnPages",
           "viewId": "List",
           "viewName": "List"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "controlAggregation": "beginColumnPages",
+          "viewId": "Detail",
+          "viewName": "Detail"
         }
       }
     },

@@ -3,5 +3,5 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f">
-    <f:FlexibleColumnLayout id="idFlexibleColumnLayout" layout="OneColumn"/>
+    <f:FlexibleColumnLayout id="idFlexibleColumnLayout" layout="OneColumn" stateChange=".onStateChanged" backgroundDesign="Solid"/>
 </mvc:View>
