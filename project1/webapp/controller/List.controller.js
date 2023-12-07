@@ -34,8 +34,6 @@ sap.ui.define([
 			// this.setModel(oProductsModel, 'products');
 			this.oRouter.getRoute("RouteList").attachPatternMatched(this._onRoutePatternMatched, this);
 			this.oModel = new JSONModel();
-			this.oModel.loadData((".mockdata/products.json"), null, false);
-			this.getView().setModel(this.oModel);
 
 		},
 
