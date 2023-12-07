@@ -24,15 +24,27 @@ sap.ui.define([
 
 			// oModel = new JSONModel();
 			// this.getView().setModel(oModel);
-			
+
 			// set products demo model on this sample
 			// debugger;
-			oProductsModel = new JSONModel();
-			oProductsModel.loadData('/mockdata/products.json');
-			oProductsModel.setSizeLimit(1000);
-			this.getView().setModel(oProductsModel, 'products');
+			// oProductsModel = new JSONModel();
+			// oProductsModel.loadData('/mockdata/products.json');
+			// oProductsModel.setSizeLimit(1000);
+			// this.getView().setModel(oProductsModel, 'products');
 			// this.setModel(oProductsModel, 'products');
+			this.oRouter.getRoute("RouteList").attachPatternMatched(this._onRoutePatternMatched, this);
+			this.oModel = new JSONModel();
+			this.oModel.loadData((".mockdata/products.json"), null, false);
+			this.getView().setModel(this.oModel);
 
+		},
+
+		_onRoutePatternMatched: function (oEvent) {
+			var oAppViewModel = this.getOwnerComponent().getModel("appViewModel");
+			oAppViewModel.setProperty("/layout", "OneColumn")
+			var oArgs = oEvent.getParameter("arguments");
+
+			var sDepartment = oArgs.Path;
 		},
 
 		navToNextPage2: function () {
@@ -74,10 +86,19 @@ sap.ui.define([
 		},
 
 		onListItemPress: function (oEvent) {
-			var productPath = oEvent.getSource().getBindingContext("products").getPath(),
-				product = productPath.split("/").slice(-1).pop();
 
-			this.oRouter.navTo("detail", { layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, product: product });
-		},
+			var sPath = oEvent.getSource().getSelectedItem().getBindingContext("products").getPath();
+			// sPath = sPath.split("/").slice(-1).pop();
+			// console.log(sPath)
+			sPath = sPath.split("/").slice(-1).pop();
+			// var oFCL = this.oView.getParent().getParent();
+			var oArguments = {
+				Path: sPath,
+			}
+
+			this.oRouter.navTo("RouteDetail", oArguments, true);
+
+			// oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
+		}
 	});
 });

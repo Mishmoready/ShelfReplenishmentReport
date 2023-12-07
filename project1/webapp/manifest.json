@@ -40,6 +40,7 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.f": {},
+        "sap.uxap":{},
         "sap.suite.ui.generic.template": {},
         "sap.ui.comp": {},
         "sap.ui.generic.app": {},
@@ -86,14 +87,14 @@
         },
         {
           "name": "RouteList",
-          "pattern": "list",
+          "pattern": "list/{Path}",
           "target": [
             "TargetList"
           ]
         },
         {
           "name": "RouteDetail",
-          "pattern": "detail",
+          "pattern": "detail/{Path}",
           "target": [
             "TargetList",
             "TargetDetail"
@@ -120,7 +121,7 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "controlAggregation": "beginColumnPages",
+          "controlAggregation": "midColumnPages",
           "viewId": "Detail",
           "viewName": "Detail"
         }
@@ -129,8 +130,8 @@
     "rootView": {
       "viewName": "project1.view.App",
       "type": "XML",
-      "async": true,
-      "id": "App"
+      "async": false,
+      "id": "fcl"
     }
   }
 }

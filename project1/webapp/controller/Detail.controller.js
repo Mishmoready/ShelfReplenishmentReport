@@ -9,6 +9,26 @@ sap.ui.define([
 
 			this.oRouter = oOwnerComponent.getRouter();
 			this.oModel = oOwnerComponent.getModel();
+
+			this.oRouter.getRoute("RouteDetail").attachPatternMatched(this._onRoutePatternMatched, this);
+		},
+
+		_onRoutePatternMatched: function (oEvent) {
+
+			var oArgs = oEvent.getParameter("arguments");
+			var sPath = oArgs.Path;
+		
+
+
+			this.getView().bindElement({
+				path: "/ProductCollection/" + sPath,
+				model: "products"
+			});
+
+			var oAppViewModel = this.getOwnerComponent().getModel("appViewModel");
+			oAppViewModel.setProperty("/layout", "TwoColumnsMidExpanded")
+
+
 		},
 
 		_onProductMatched: function (oEvent) {
@@ -19,11 +39,7 @@ sap.ui.define([
 			});
 		},
 
-		navToNextPage2: function () {
-			this.oRouter.navTo("RouteDetail");
-		},
-
-		onEditToggleButtonPress: function() {
+		onEditToggleButtonPress: function () {
 			var oObjectPage = this.getView().byId("ObjectPageLayout"),
 				bCurrentShowFooterState = oObjectPage.getShowFooter();
 
@@ -31,9 +47,13 @@ sap.ui.define([
 		},
 
 		onExit: function () {
-			this.oRouter.getRoute("master").detachPatternMatched(this._onProductMatched, this);
-			this.oRouter.getRoute("detail").detachPatternMatched(this._onProductMatched, this);
+			this.oRouter.getRoute("List").detachPatternMatched(this._onProductMatched, this);
+			this.oRouter.getRoute("D").detachPatternMatched(this._onProductMatched, this);
 		},
+
+		handleClose: function () {
+
+		}
 
 	});
 });

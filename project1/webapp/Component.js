@@ -1,13 +1,10 @@
-/**
- * eslint-disable @sap/ui5-jsdocs/no-jsdoc
- */
-
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "project1/model/models"
+        "project1/model/models",
+        "sap/ui/model/json/JSONModel"
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models, JSONModel) {
         "use strict";
 
         return UIComponent.extend("project1.Component", {
@@ -15,11 +12,6 @@ sap.ui.define([
                 manifest: "json"
             },
 
-            /**
-             * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
-             * @public
-             * @override
-             */
             init: function () {
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
@@ -29,6 +21,15 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                var oModel = new JSONModel({layout: "OneColumn"});
+                this.setModel(oModel, "appViewModel");
+                
+
+                var oProductsModel = new JSONModel();
+                oProductsModel.loadData('/mockdata/products.json');
+                oProductsModel.setSizeLimit(1000);
+                this.setModel(oProductsModel, 'products');
             }
         });
     }

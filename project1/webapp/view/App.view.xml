@@ -3,5 +3,12 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f">
-    <f:FlexibleColumnLayout id="idFlexibleColumnLayout" layout="OneColumn" stateChange=".onStateChanged" backgroundDesign="Solid"/>
+    <f:FlexibleColumnLayout id="idFlexibleColumnLayout" layout="{appViewModel>/layout}" backgroundDesign="Solid">
+    <!-- <f:beginColumnPages> 
+    <mvc:XMLView id="List" viewName="project1.view.List"></mvc:XMLView>
+    </f:beginColumnPages>
+    <f:midColumnPages>
+    <mvc:XMLView id="Detail" viewName="project1.view.Detail"></mvc:XMLView>
+    </f:midColumnPages> -->
+    </f:FlexibleColumnLayout>
 </mvc:View>
