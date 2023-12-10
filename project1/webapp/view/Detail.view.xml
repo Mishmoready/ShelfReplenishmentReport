@@ -1,74 +1,216 @@
 <mvc:View
-	controllerName="project1.controller.Detail"
-	xmlns="sap.uxap"
-	xmlns:m="sap.m"
-	xmlns:f="sap.f"
-	xmlns:l="sap.ui.layout"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:mvc="sap.ui.core.mvc">
+    controllerName="project1.controller.Detail"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:mc="sap.suite.ui.microchart"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns:w="sap.ui.integration.widgets"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false"
+    >
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title
+                        text="{products>Name}"
+                        wrapping="true"
+                        class="sapUiSmallMarginEnd"
+                    />
+                </expandedHeading>
 
-	<ObjectPageLayout
-		id="ObjectPageLayout"
-		showTitleInHeaderContent="true"
-		alwaysShowContentHeader="false"
-		preserveHeaderStateOnScroll="false"
-		headerContentPinnable="true"
-		isChildPage="true"
-		upperCaseAnchorBar="false"
-		>
-				<headerTitle>
+                <snappedHeading>
+                    <m:FlexBox
+                        wrap="Wrap"
+                        fitContainer="true"
+                        alignItems="Center"
+                    >
+                        <m:FlexBox
+                            wrap="NoWrap"
+                            fitContainer="true"
+                            alignItems="Center"
+                            class="sapUiTinyMarginEnd"
+                        >
+                            <m:Avatar
+                                src="../../../../../../../{products>ProductPicUrl}"
+                                displaySize="S"
+                                displayShape="Square"
+                            />
+                            <m:Title
+                                text="{products>Name}"
+                                wrapping="true"
+                                class="sapUiTinyMarginEnd"
+                            />
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </snappedHeading>
 
-			<ObjectPageDynamicHeaderTitle>
-					<expandedHeading>
-							<m:Title text="{products>ArticleDescription}" wrapping="true" class="sapUiSmallMarginEnd"/>
-						</expandedHeading>
-				<actions>
-					<m:ToggleButton
-						text="Edit"
-						type="Emphasized"/>
-					<m:Button
-						text="Delete"
-						type="Transparent"/>
-					<m:Button
-						text="Copy"
-						type="Transparent"/>
-					<m:Button
-						icon="sap-icon://decline"
-						type="Transparent"
-						press=".handleClose"/>
-				</actions>
-			</ObjectPageDynamicHeaderTitle>
-			
-		</headerTitle>
-				<headerContent>
-			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
-				<f:Avatar
-					displaySize="L"
-					displayShape="Square"
-					class="sapUiTinyMarginEnd">
-				</f:Avatar>
-				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Main Category"/>
-				</m:VBox>
-				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Subcategory"/>
-				</m:VBox>
-				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Price"/>
-				</m:VBox>
-			</m:FlexBox>
-		</headerContent>
-	</ObjectPageLayout>
+                <actions>
+                    <m:Button
+                        text="Edit"
+                        type="Emphasized"
+                        press="toggleAreaPriority"
+                    />
+                    <m:Button
+                        text="Delete"
+                        type="Transparent"
+                    />
+                    <m:Button
+                        text="Copy"
+                        type="Transparent"
+                    />
+                    <m:Button
+                        text="Toggle Footer"
+                        type="Transparent"
+                        press="onToggleFooter"
+                    />
+                    <m:Button
+                        icon="sap-icon://action"
+                        type="Transparent"
+                    />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
 
-			<l:VerticalLayout id="containerLayout" width="100%">
-		<l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
-			<l:BlockLayoutRow>
-				<l:BlockLayoutCell title="50% width cell">
-				</l:BlockLayoutCell>
-				<l:BlockLayoutCell title="50% width cell">
-				</l:BlockLayoutCell>
-			</l:BlockLayoutRow>
-		</l:BlockLayout>
-	</l:VerticalLayout>
-	
+        <headerContent />
+
+        <sections>
+            <ObjectPageSection>
+                <subSections>
+                    <ObjectPageSubSection>
+                        <m:Title
+                            text="Title Goes Here"
+                            wrapping="false"
+                            class="sapUiLargeMarginRight"
+                            textAlign="Center"
+                        />
+                        <m:FlexBox
+                            wrap="Wrap"
+                            fitContainer="true"
+                            alignItems="Stretch"
+                        >
+                            <m:Avatar
+                                src="../../../../../../../{products>ProductPicUrl}"
+                                displaySize="XL"
+                                displayShape="Square"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <form:SimpleForm
+                                maxContainerCols="2"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanL="6"
+                                labelSpanM="6"
+                                emptySpanL="0"
+                                emptySpanM="0"
+                                columnsL="0"
+                                columnsM="0"
+                            >
+                                <form:content>
+                                    <m:Label text="Material Number" />
+                                    <m:Text text="Ossshhhh}" />
+                                    <m:Label text="Primary Location" />
+                                    <m:Text text="Ossshhhhon}" />
+                                    <m:Label text="Bay/Slot" />
+                                    <m:Text text="Ossshhhhame}" />
+                                </form:content>
+                            </form:SimpleForm>
+                            <m:Panel headerText="Gap Overview">
+                                <mc:LineMicroChart
+                                    size="M"
+                                    leftTopLabel="120 Mio"
+                                    leftBottomLabel="140 Mio"
+                                    rightTopLabel="Sept 2016"
+                                    rightBottomLabel="Oct 2016"
+                                    press="press"
+                                    class="sapUiTinyMarginTop"
+                                />
+                            </m:Panel>
+                        </m:FlexBox>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection>
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Insert Title here:"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Text text="insert id here" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Insert Title here:"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Text text="insert id here" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Insert Title here:"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Text text="insert id here" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+                <subSections>
+                    <ObjectPageSubSection
+                        title="Insert Title here:"
+                        titleUppercase="false"
+                    >
+                        <blocks>
+                            <m:Text text="insert id here" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <w:Card manifest="/model/MSSandSOH.json">
+                                <w:layoutData>
+                                    <f:GridContainerItemLayoutData
+                                        rows="4"
+                                        columns="2"
+                                    />
+                                </w:layoutData>
+                            </w:Card>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+
+    <l:VerticalLayout
+        id="containerLayout"
+        width="100%"
+    >
+        <l:BlockLayout
+            id="BlockLayout"
+            background="{/selectedBackground}"
+        >
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="50% width cell" />
+                <l:BlockLayoutCell title="50% width cell" />
+            </l:BlockLayoutRow>
+        </l:BlockLayout>
+    </l:VerticalLayout>
 </mvc:View>
