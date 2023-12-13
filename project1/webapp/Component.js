@@ -27,7 +27,7 @@ sap.ui.define([
                 
 
                 var oProductsModel = new JSONModel();
-                oProductsModel.loadData('/mockdata/products.json');
+                oProductsModel.loadData('/model/products.json');
                 oProductsModel.setSizeLimit(1000);
                 this.setModel(oProductsModel, 'products');
             }

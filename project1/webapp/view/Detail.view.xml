@@ -13,7 +13,7 @@
     <ObjectPageLayout
         id="ObjectPageLayout"
         showTitleInHeaderContent="true"
-        alwaysShowContentHeader="false"
+        alwaysShowContentHeader="true"
         preserveHeaderStateOnScroll="false"
         headerContentPinnable="true"
         isChildPage="true"
@@ -23,7 +23,7 @@
             <ObjectPageDynamicHeaderTitle>
                 <expandedHeading>
                     <m:Title
-                        text="{products>Name}"
+                        text="{products>ArticleDescription}"
                         wrapping="true"
                         class="sapUiSmallMarginEnd"
                     />
@@ -42,18 +42,52 @@
                             class="sapUiTinyMarginEnd"
                         >
                             <m:Avatar
-                                src="../../../../../../../{products>ProductPicUrl}"
+                                src="{products>Image}"
                                 displaySize="S"
                                 displayShape="Square"
-                            />
-                            <m:Title
-                                text="{products>Name}"
-                                wrapping="true"
                                 class="sapUiTinyMarginEnd"
                             />
+                            <m:VBox>
+                                <m:Title
+                                    text="{products>ArticleDescription}"
+                                    wrapping="true"
+                                    class="sapUiMediumMarginEnd"
+                                />
+                                <m:Text
+                                    text="{products>DepartmentName}"
+                                    wrapping="true"
+                                    class="sapUiMediumMarginEnd"
+                                />
+                            </m:VBox>
                         </m:FlexBox>
                     </m:FlexBox>
                 </snappedHeading>
+
+                <navigationActions>
+                    <m:OverflowToolbarButton
+                        type="Transparent"
+                        icon="sap-icon://full-screen"
+                        press="handleFullScreen"
+                        id="enterFullScreenBtn"
+                        tooltip="Enter Full Screen Mode"
+                        visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"
+                    />
+                    <m:OverflowToolbarButton
+                        type="Transparent"
+                        icon="sap-icon://exit-full-screen"
+                        press="handleExitFullScreen"
+                        id="exitFullScreenBtn"
+                        tooltip="Exit Full Screen Mode"
+                        visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"
+                    />
+                    <m:OverflowToolbarButton
+                        type="Transparent"
+                        icon="sap-icon://decline"
+                        press="handleClose"
+                        tooltip="Close middle column"
+                        visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"
+                    />
+                </navigationActions>
 
                 <actions>
                     <m:Button
@@ -82,117 +116,134 @@
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
 
-        <headerContent />
+        <headerContent>
+            <m:VBox>
+                <m:FlexBox
+                    wrap="Wrap"
+                    fitContainer="true"
+                >
+                    <m:Avatar
+                        src="{products>Image}"
+                        displaySize="XL"
+                        displayShape="Square"
+                        class="sapUiMediumMarginEnd"
+                    />
+
+                    <m:VBox class="sapUiMediumMarginEnd">
+                        <m:Title text="Gap Overview" />
+                        <mc:LineMicroChart
+                            threshold="0"
+                            press="press"
+                            size="L"
+                            leftTopLabel="0"
+                            leftBottomLabel="January 1"
+                            rightTopLabel="100"
+                            rightBottomLabel="January 30"
+                        >
+                            <mc:lines>
+                                <mc:LineMicroChartLine>
+                                    <mc:LineMicroChartPoint
+                                        x="0"
+                                        y="5"
+                                    />
+                                    <mc:LineMicroChartPoint
+                                        x="20"
+                                        y="13"
+                                    />
+                                    <mc:LineMicroChartPoint
+                                        x="40"
+                                        y="20"
+                                    />
+                                    <mc:LineMicroChartPoint
+                                        x="60"
+                                        y="17"
+                                    />
+                                    <mc:LineMicroChartPoint
+                                        x="80"
+                                        y="12"
+                                    />
+                                    <mc:LineMicroChartPoint
+                                        x="100"
+                                        y="33"
+                                    />
+                                </mc:LineMicroChartLine>
+                            </mc:lines>
+                        </mc:LineMicroChart>
+                    </m:VBox>
+                    <m:VBox>
+                        <m:Title text="Days Out of Stock" />
+                        <m:ObjectNumber
+                            class="sapMObjectNumberLarge"
+                            state="{= ${products>DaysSinceLastSold} > 0 ? 'Error' : 'Success' }"
+                            number="{products>DaysSinceLastSold}"
+                            emphasized="true"
+                        />
+                    </m:VBox>
+                </m:FlexBox>
+            </m:VBox>
+        </headerContent>
 
         <sections>
             <ObjectPageSection>
                 <subSections>
-                    <ObjectPageSubSection>
-                        <m:Title
-                            text="Title Goes Here"
-                            wrapping="false"
-                            class="sapUiLargeMarginRight"
-                            textAlign="Center"
-                        />
-                        <m:FlexBox
-                            wrap="Wrap"
-                            fitContainer="true"
-                            alignItems="Stretch"
-                        >
-                            <m:Avatar
-                                src="../../../../../../../{products>ProductPicUrl}"
-                                displaySize="XL"
-                                displayShape="Square"
-                                class="sapUiTinyMarginEnd"
-                            />
-                            <form:SimpleForm
-                                maxContainerCols="2"
-                                editable="false"
-                                layout="ResponsiveGridLayout"
-                                labelSpanL="6"
-                                labelSpanM="6"
-                                emptySpanL="0"
-                                emptySpanM="0"
-                                columnsL="0"
-                                columnsM="0"
+                    <ObjectPageSubSection title="General Infomation">
+                        <m:HBox>
+                            <m:FlexBox
+                                wrap="Wrap"
+                                fitContainer="true"
                             >
-                                <form:content>
+                                <form:SimpleForm
+                                    maxContainerCols="3"
+                                    editable="false"
+                                    labelSpanL="6"
+                                    labelSpanM="6"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    columnsL="0"
+                                    columnsM="0"
+                                >
                                     <m:Label text="Material Number" />
-                                    <m:Text text="Ossshhhh}" />
+                                    <m:Text text="{products>Material}" />
                                     <m:Label text="Primary Location" />
-                                    <m:Text text="Ossshhhhon}" />
+                                    <m:Text text="{products>Aisle}" />
                                     <m:Label text="Bay/Slot" />
-                                    <m:Text text="Ossshhhhame}" />
-                                </form:content>
-                            </form:SimpleForm>
-                            <m:Panel headerText="Gap Overview">
-                                <mc:LineMicroChart
-                                    size="M"
-                                    leftTopLabel="120 Mio"
-                                    leftBottomLabel="140 Mio"
-                                    rightTopLabel="Sept 2016"
-                                    rightBottomLabel="Oct 2016"
-                                    press="press"
-                                    class="sapUiTinyMarginTop"
-                                />
-                            </m:Panel>
-                        </m:FlexBox>
+                                    <m:Text
+                                        text="{products>Bay}/{products>Slot}"
+                                    />
+                                </form:SimpleForm>
+                                <form:SimpleForm
+                                    maxContainerCols="3"
+                                    editable="false"
+                                    labelSpanL="6"
+                                    labelSpanM="6"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    columnsL="0"
+                                    columnsM="0"
+                                >
+                                    <m:Label text="Vendor" />
+                                    <m:Text text="{products>Vendor}" />
+                                    <m:Label text="Last Sold Date" />
+                                    <m:Text text="{products>LastPODate}" />
+                                    <m:Label text="Next Delivery Date" />
+                                    <m:Text text="{products>LastReceiptDate}" />
+                                </form:SimpleForm>
+                            </m:FlexBox>
+                        </m:HBox>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
-            <ObjectPageSection>
-                <subSections>
-                    <ObjectPageSubSection
-                        title="Insert Title here:"
-                        titleUppercase="false"
-                    >
-                        <blocks>
-                            <m:Text text="insert id here" />
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-                <subSections>
-                    <ObjectPageSubSection
-                        title="Insert Title here:"
-                        titleUppercase="false"
-                    >
-                        <blocks>
-                            <m:Text text="insert id here" />
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-                <subSections>
-                    <ObjectPageSubSection
-                        title="Insert Title here:"
-                        titleUppercase="false"
-                    >
-                        <blocks>
-                            <m:Text text="insert id here" />
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-                <subSections>
-                    <ObjectPageSubSection
-                        title="Insert Title here:"
-                        titleUppercase="false"
-                    >
-                        <blocks>
-                            <m:Text text="insert id here" />
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
+            <ObjectPageSection title="MSS and SOH">
                 <subSections>
                     <ObjectPageSubSection>
-                        <blocks>
-                            <w:Card manifest="/model/MSSandSOH.json">
-                                <w:layoutData>
-                                    <f:GridContainerItemLayoutData
-                                        rows="4"
-                                        columns="2"
-                                    />
-                                </w:layoutData>
-                            </w:Card>
-                        </blocks>
+                        <w:Card manifest="/model/MSSandSOH.json">
+                            <w:layoutData>
+                                <f:GridContainerItemLayoutData
+                                    rows="20"
+                                    columns="20"
+                                />
+                            </w:layoutData>
+                        </w:Card>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>

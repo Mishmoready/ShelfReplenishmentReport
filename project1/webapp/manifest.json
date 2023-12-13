@@ -26,11 +26,14 @@
       "tablet": "",
       "tablet@2": ""
     },
+
     "deviceTypes": {
       "desktop": true,
       "tablet": true,
       "phone": true
-    }
+    },
+
+  "fullWidth": true
   },
   "sap.ui5": {
     "flexEnabled": false,

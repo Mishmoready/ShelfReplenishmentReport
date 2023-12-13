@@ -36,8 +36,11 @@
 				},
 				"plotArea": {
 					"dataLabel": {
-						"visible": true
-					}
+						"visible": true,
+						"showtotal": true,
+						"type": "value"
+					},
+					"colorPalette": ["#1b90ff", "#f2915e", "#179c6f", "#f15828", "#429983", "#863fd5"]
 				},
 				"title": {
 					"visible": false

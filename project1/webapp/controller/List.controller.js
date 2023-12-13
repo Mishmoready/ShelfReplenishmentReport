@@ -85,7 +85,7 @@ sap.ui.define([
 
 		onListItemPress: function (oEvent) {
 
-			var sPath = oEvent.getSource().getSelectedItem().getBindingContext("products").getPath();
+			var sPath = oEvent.getParameter("listItem").getBindingContext("products").getPath();
 			// sPath = sPath.split("/").slice(-1).pop();
 			// console.log(sPath)
 			sPath = sPath.split("/").slice(-1).pop();

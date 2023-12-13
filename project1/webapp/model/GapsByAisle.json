@@ -51,7 +51,8 @@
 					"dataLabel": {
 						"visible": false,
 						"showTotal": true
-					}
+					},
+					"colorPalette": ["#f26018", "#1b90ff"]
 				},
 				"categoryAxis": {
 					"title": {

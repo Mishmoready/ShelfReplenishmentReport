@@ -32,7 +32,7 @@
                 {
                     "articles": "CON R/MIX SHEPHERDS PIE 50G",
                     "salesOrder": "1123175",
-                    "supplier": "Heinz Watties",
+                    "NumberOfScans": 50,
                     "lastSoldDate": "08/11/2023",
                     "status": 0,
                     "statusState": "Error",
@@ -41,7 +41,7 @@
                 {
                     "articles": "CON R/MIX SPAG/BOLOGNESE 50G",
                     "salesOrder": "1120327",
-                    "supplier": "Distribution Centre",
+                    "NumberOfScans": 8,
                     "lastSoldDate": "09/11/2023",
                     "status": 0,
                     "statusState": "Error",
@@ -50,7 +50,7 @@
                 {
                     "articles": "WATTIES BOTS CRANBERRY SAUCE 300G",
                     "salesOrder": "1149406",
-                    "supplier": "Moi Agencies Limited",
+                    "NumberOfScans": 5,
                     "lastSoldDate": "23/11/2023",
                     "status": 6,
                     "statusState": "Warning",
@@ -59,7 +59,7 @@
                 {
                     "articles": "TABASCO SAUCE RED 60ML",
                     "salesOrder": "1091051",
-                    "supplier": "Moi Agencies Limited",
+                    "NumberOfScans": 8,
                     "lastSoldDate": "15/11/2023",
                     "status": 39,
                     "statusState": "Warning",
@@ -68,7 +68,7 @@
                 {
                     "articles": "MCILHENNY TABASCO SAUCE GREEN 60ML",
                     "salesOrder": "1091052",
-                    "supplier": "Distribution Centre",
+                    "NumberOfScans": 12,
                     "lastSoldDate": "05/11/2023",
                     "status": 10,
                     "statusState": "Warning",
@@ -90,8 +90,8 @@
                         "identifier": true
                     },
                     {
-                        "title": "Supplier",
-                        "value": "{supplier}"
+                        "title": "Number Of Scans",
+                        "value": "{NumberOfScans}"
                     },
                     {
                         "title": "Last Sold Date",
@@ -102,15 +102,8 @@
                         "title": "Stock On Hand",
                         "value": "{status}",
                         "state": "{statusState}"
-                    },
-                    {
-                        "title": "Progress",
-                        "progressIndicator": {
-                            "percent": "{deliveryProgress}",
-                            "text": "{= format.percent(${deliveryProgress} / 100)}",
-                            "state": "{statusState}"
-                        }
                     }
+
                 ]
             }
         }

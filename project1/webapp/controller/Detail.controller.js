@@ -51,10 +51,10 @@ sap.ui.define([
 			this.oRouter.getRoute("D").detachPatternMatched(this._onProductMatched, this);
 		},
 
-		handleClose: function () {
-				var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/endColumn/closeColumn");
-				this.oRouter.navTo("detail", {layout: sNextLayout, product: this._product});
-		}
+		// handleClose: function () {
+		// 		var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/endColumn/closeColumn");
+		// 		this.oRouter.navTo("detail", {layout: sNextLayout, product: this._product});
+		// }
 
 	});
 });

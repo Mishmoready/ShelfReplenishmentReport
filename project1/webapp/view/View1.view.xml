@@ -30,73 +30,10 @@
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
-                        <fb:FilterBar
-                            id="filterbar"
-                            persistencyKey="myPersKey"
-                            useToolbar="false"
-                            search=".onSearch"
-                            filterChange=".onFilterChange"
-                            afterVariantLoad=".onAfterVariantLoad"
-                        >
-                            <fb:filterGroupItems>
-                                <fb:FilterGroupItem
-                                    name="Name"
-                                    label="Department"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true"
-                                >
-                                    <fb:control>
-                                        <MultiComboBox >
-
-                                        </MultiComboBox>
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="Name1"
-                                    label="Time Period"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true"
-                                >
-                                    <fb:control>
-                                        <DatePicker
-                                            id="DP1"
-                                            placeholder="Enter Date"
-                                            change="handleChange"
-                                        />
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="Name2"
-                                    label="Number of Gaps"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true"
-                                >
-                                    <fb:control>
-                                        <MultiComboBox />
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="Name3"
-                                    label="Status"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true"
-                                >
-                                    <fb:control>
-                                        <MultiComboBox />
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="Name4"
-                                    label="Task Source"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true"
-                                >
-                                    <fb:control>
-                                        <MultiComboBox />
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                            </fb:filterGroupItems>
-                        </fb:FilterBar>
+                        <core:Fragment
+                            fragmentName="project1.view.fragment.filterbar"
+                            type="XML"
+                        />
                     </f:content>
                 </f:DynamicPageHeader>
             </f:header>
@@ -143,16 +80,16 @@
                     <w:Card manifest="/model/Top5ArticleGaps.json">
                         <w:layoutData>
                             <f:GridContainerItemLayoutData
-                                rows="8"
-                                columns="8"
+                                rows="6"
+                                columns="6"
                             />
                         </w:layoutData>
                     </w:Card>
-                    <w:Card manifest="/model/SupplierOOS.json">
+                    <w:Card manifest="/model/ComparisonOOSvsNF.json">
                         <w:layoutData>
                             <f:GridContainerItemLayoutData
                                 rows="4"
-                                columns="2"
+                                columns="3"
                             />
                         </w:layoutData>
                     </w:Card>
@@ -160,7 +97,7 @@
                         <w:layoutData>
                             <f:GridContainerItemLayoutData
                                 rows="4"
-                                columns="2"
+                                columns="3"
                             />
                         </w:layoutData>
                     </w:Card>

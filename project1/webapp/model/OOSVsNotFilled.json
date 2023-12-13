@@ -29,7 +29,7 @@
 	"sap.card": {
 		"type": "Analytical",
 		"header": {
-			"title": "Supplier OOS"
+			"title": "DC Supplier OOS"
 		},
 		"content": {
 			"chartType": "Donut",
@@ -42,8 +42,12 @@
 				},
 				"plotArea": {
 					"dataLabel": {
-						"visible": true
-					}
+						"visible": true,
+						"showtotal": true,
+						"type": "value"
+						
+					},
+					"colorPalette": ["#1b90ff", "#179c6f"]
 				},
 				"title": {
 					"visible": false
@@ -55,12 +59,12 @@
 						{
 							"id": "1",
 							"storeName": "OOS",
-							"revenue": 345292.06
+							"revenue": 9
 						},
 						{
 							"id": "2",
 							"storeName": "Not Filled",
-							"revenue": 1564235.29
+							"revenue": 91
 						}
 					]
 				},

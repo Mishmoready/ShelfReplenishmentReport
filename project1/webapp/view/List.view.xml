@@ -31,81 +31,10 @@
         <f:header>
             <f:DynamicPageHeader>
                 <f:content>
-                    <fb:FilterBar
-                        id="filterbar"
-                        persistencyKey="myPersKey"
-                        useToolbar="false"
-                        search=".onSearch"
-                        filterChange=".onFilterChange"
-                        afterVariantLoad=".onAfterVariantLoad"
-                    >
-                        <fb:filterGroupItems>
-                            <fb:FilterGroupItem
-                                name="Name"
-                                label="Department"
-                                groupName="Group1"
-                                visibleInFilterBar="true"
-                            >
-                                <fb:control>
-                                    <MultiComboBox
-                                        selectionChange="handleSelectionChange"
-                                        selectionFinish="handleSelectionFinish"
-                                        width="350px"
-                                        items="{path: '/ProductCollection', sorter: { path: 'Name' }}"
-                                    >
-                                        <core:Item
-                                            key="{ProductId}"
-                                            text="{Name}"
-                                        />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem
-                                name="Name1"
-                                label="Time Period"
-                                groupName="Group1"
-                                visibleInFilterBar="true"
-                            >
-                                <fb:control>
-                                    <DatePicker
-                                        id="DP1"
-                                        placeholder="Enter Date"
-                                        change="handleChange"
-                                    />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem
-                                name="Name2"
-                                label="Number of Gaps"
-                                groupName="Group1"
-                                visibleInFilterBar="true"
-                            >
-                                <fb:control>
-                                    <MultiComboBox />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem
-                                name="Name3"
-                                label="Number of Gaps"
-                                groupName="Group1"
-                                visibleInFilterBar="true"
-                            >
-                                <fb:control>
-                                    <MultiComboBox />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem
-                                name="Name4"
-                                label="Gap Status"
-                                groupName="Group1"
-                                visibleInFilterBar="true"
-                            >
-                                <fb:control>
-                                    <MultiComboBox />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                        </fb:filterGroupItems>
-                    </fb:FilterBar>
+                    <core:Fragment
+                        fragmentName="project1.view.fragment.filterbar"
+                        type="XML"
+                    />
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
@@ -117,35 +46,10 @@
                     <Title text="Grocery Gaps" />
                     <ToolbarSpacer />
                     <OverflowToolbarButton
-                        icon="sap-icon://paper-plane"
-                        text="Send"
-                        type="Transparent"
-                        press=".onSend"
-                    />
-                    <ToolbarSeparator />
-                    <OverflowToolbarButton
-                        icon="sap-icon://sort"
-                        text="Sort"
-                        type="Transparent"
-                        press=".onSort"
-                    />
-                    <OverflowToolbarButton
                         icon="sap-icon://filter"
                         text="Filter"
                         type="Transparent"
                         press=".onFilter"
-                    />
-                    <OverflowToolbarButton
-                        icon="sap-icon://group-2"
-                        text="Group"
-                        type="Transparent"
-                        press=".onGroup"
-                    />
-                    <OverflowToolbarButton
-                        icon="sap-icon://action-settings"
-                        text="Settings"
-                        type="Transparent"
-                        press=".onSettings"
                     />
                     <ToolbarSeparator />
                     <OverflowToolbarButton
@@ -160,18 +64,10 @@
                         type="Transparent"
                         press=".onPrint"
                     />
-                    <ToolbarSeparator />
-                    <OverflowToolbarButton
-                        icon="sap-icon://full-screen"
-                        text="Full Screen"
-                        type="Transparent"
-                        press=".onFullScreen"
-                    />
                 </OverflowToolbar>
                 <Table
                     id="productsTable"
                     inset="false"
-                    mode="SingleSelectMaster"
                     itemPress="onListItemPress"
                     items="{
 						path: 'products>/ProductCollection',
@@ -182,13 +78,11 @@
 					}"
                     class="sapFDynamicPageAlignContent"
                     width="auto"
+                    mode="MultiSelect"
                 >
                     <columns>
                         <Column width="12em">
                             <Text text="Article Description" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="Gap Status" />
                         </Column>
                     </columns>
                     <items>
