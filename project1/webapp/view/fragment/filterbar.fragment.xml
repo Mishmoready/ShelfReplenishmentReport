@@ -1,0 +1,177 @@
+<core:FragmentDefinition
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:core="sap.ui.core"
+>
+    <fb:FilterBar
+        id="filterbar"
+        persistencyKey="myPersKey"
+        useToolbar="false"
+        search=".onSearch"
+        filterChange=".onFilterChange"
+        afterVariantLoad=".onAfterVariantLoad"
+    >
+        <fb:filterGroupItems>
+            <fb:FilterGroupItem
+                name="Name"
+                label="Department"
+                groupName="Group1"
+                visibleInFilterBar="true"
+            >
+                <fb:control>
+                    <MultiComboBox>
+                        <core:Item
+                            key="All"
+                            text="All"
+                        />
+                        <core:Item
+                            key="Bakery"
+                            text="Bakery"
+                        />
+                        <core:Item
+                            key="Chilled"
+                            text="Chilled"
+                        />
+                        <core:Item
+                            key="Frozen"
+                            text="Frozen"
+                        />
+                        <core:Item
+                            key="Grocery"
+                            text="Grocery"
+                        />
+                        <core:Item
+                            key="Liquor"
+                            text="Liquor"
+                        />
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem
+                name="Name1"
+                label="Time Period"
+                groupName="Group1"
+                visibleInFilterBar="true"
+            >
+                <fb:control>
+                    <DynamicDateRange
+                        id="dynamic-range"
+                        change="onChange"
+                    />
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem
+                name="Name3"
+                label="Number of Gaps"
+                groupName="Group1"
+                visibleInFilterBar="true"
+            >
+                <fb:control>
+                    <MultiComboBox>
+                        <core:Item
+                            key="SOHBelowThree"
+                            text="SOH - Below 3"
+                        />
+                        <core:Item
+                            key="SOHThreeTen"
+                            text="SOH - 3 to 10"
+                        />
+                        <core:Item
+                            key="SOHElevenTwenty"
+                            text="SOH - 11 to 20"
+                        />
+                        <core:Item
+                            key="SOHTwentyOnePlus"
+                            text="SOH - 21+"
+                        />
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem
+                name="Name2"
+                label="Status"
+                groupName="Group1"
+                visibleInFilterBar="true"
+            >
+                <fb:control>
+                    <MultiComboBox>
+                        <core:Item
+                            key="Found"
+                            text="Found"
+                        />
+                        <core:Item
+                            key="NotFound"
+                            text="Not Found"
+                        />
+                        <core:Item
+                            key="PartiallyFound"
+                            text="Partially Found"
+                        />
+                        <core:Item
+                            key="Overdue"
+                            text="Overdue"
+                        />
+                        <core:Item
+                            key="StoreBlock"
+                            text="Store Block"
+                        />
+                        <core:Item
+                            key="RemovedFromPOS"
+                            text="Removed from POS"
+                        />
+                        <core:Item
+                            key="NegativeStock"
+                            text="Negative Stock"
+                        />
+                        <core:Item
+                            key="LongTermOOS"
+                            text="Long Term OOS"
+                        />
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem
+                name="Name4"
+                label="Task Source"
+                groupName="Group1"
+                visibleInFilterBar="true"
+            >
+                <fb:control>
+                    <MultiComboBox>
+                        <core:Item
+                            key="Batch Job"
+                            text="Batch Job"
+                        />
+                        <core:Item
+                            key="Create Digital Picklist"
+                            text="Create Digital Picklist"
+                        />
+                        <core:Item
+                            key="Gap Buster"
+                            text="Gap Buster"
+                        />
+                        <core:Item
+                            key="Not Specified"
+                            text="Not Specified"
+                        />
+                        <core:Item
+                            key="Online Picking"
+                            text="Online Picking"
+                        />
+                        <core:Item
+                            key="Shelf Replenishment Digital Picklist"
+                            text="Shelf Replenishment Digital Picklist"
+                        />
+                        <core:Item
+                            key="Store Floor Walker"
+                            text="Store Floor Walker"
+                        />
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+        </fb:filterGroupItems>
+    </fb:FilterBar>
+</core:FragmentDefinition>

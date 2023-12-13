@@ -1,0 +1,111 @@
+{
+	"_version": "1.33.0",
+	"sap.app": {
+		"id": "card.explorer.actions.chartActions",
+		"type": "card",
+		"title": "Sample of Chart Actions",
+		"subTitle": "Sample of Chart Actions",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card",
+		"description": "A long description for this Card",
+		"tags": {
+			"keywords": [
+				"Analytical",
+				"Card",
+				"Line",
+				"Sample"
+			]
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://line-chart"
+		}
+	},
+	"sap.card": {
+		"type": "Analytical",
+		"header": {
+			"title": "Comparison OOS vs Not Filled"
+		},
+		"content": {
+			"chartType": "Donut",
+			"chartProperties": {
+				"legendGroup": {
+					"layout": {
+						"position": "top",
+						"alignment": "center"
+					}
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showtotal": true,
+						"type": "value"
+					},
+					"colorPalette": ["#1b90ff", "#179c6f"]
+				},
+				"title": {
+					"visible": false
+				}
+			},
+			"data": {
+				"json": {
+					"milk": [
+						{
+							"id": "1",
+							"storeName": "Out of Stock",
+							"revenue": 80
+						},
+						{
+							"id": "2",
+							"storeName": "SOH Not Filled",
+							"revenue": 20
+						}
+					]
+				},
+				"path": "/milk"
+			},
+			"dimensions": [
+				{
+					"name": "Store Name",
+					"value": "{storeName}"
+				}
+			],
+			"measures": [
+				{
+					"name": "Revenue",
+					"value": "{revenue}"
+				}
+			],
+			"feeds": [
+				{
+					"type": "Dimension",
+					"uid": "color",
+					"values": [
+						"Store Name"
+					]
+				},
+				{
+					"type": "Measure",
+					"uid": "size",
+					"values": [
+						"Revenue"
+					]
+				}
+			],
+			"actionableArea": "Chart",
+			"actions": [
+				{
+					"type": "Navigation",
+					"parameters": {
+						"url": "https://sap.com?id={id}&revenue={revenue}&storeName={storeName}"
+					}
+				}
+			]
+		}
+	}
+}
