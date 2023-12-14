@@ -104,8 +104,8 @@
 						"weekLabel": "Weeks"
 					},
 					"measures": {
-						"revenueLabel": "Revenue",
-						"costLabel": "Costs"
+						"revenueLabel": "Stock on Hand",
+						"costLabel": "Minimum Safety Stock"
 					},
 					"legend": {
 						"visible": true,
@@ -114,7 +114,7 @@
 					},
 					"list": [
 						{
-							"Week": "CW14",
+							"Week": "2/11",
 							"Revenue": 431,
 							"Cost": 230,
 							"Cost1": 248,
@@ -124,7 +124,7 @@
 							"Budget": 210
 						},
 						{
-							"Week": "CW15",
+							"Week": "9/11",
 							"Revenue": 494,
 							"Cost": 238.00,
 							"Cost1": 99.39,
@@ -134,7 +134,7 @@
 							"Budget": 224
 						},
 						{
-							"Week": "CW16",
+							"Week": "16/11",
 							"Revenue": 491,
 							"Cost": 221.00,
 							"Cost1": 70.54,
@@ -144,7 +144,7 @@
 							"Budget": 238
 						},
 						{
-							"Week": "CW17",
+							"Week": "23/11",
 							"Revenue": 536,
 							"Cost": 280.00,
 							"Cost1": 158.73,

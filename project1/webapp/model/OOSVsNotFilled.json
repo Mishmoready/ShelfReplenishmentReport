@@ -58,12 +58,12 @@
 					"milk": [
 						{
 							"id": "1",
-							"storeName": "OOS",
+							"storeName": "Out of Stock",
 							"revenue": 9
 						},
 						{
 							"id": "2",
-							"storeName": "Not Filled",
+							"storeName": "SOH Not Filled",
 							"revenue": 91
 						}
 					]
